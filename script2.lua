@@ -48,8 +48,9 @@ end
 
 function back(length)
  for i=1, length, 1 do
-  if i==9 then torch() end --places a torch after the first 8 blocks and
-  if (i-8)%16==0 and i>9 then torch() end --then another every 16 blocks
+  -- if i==9 then torch() end --places a torch after the first 8 blocks and
+  -- if (i-8)%16==0 and i>9 then torch() end --then another every 16 blocks  -- if i==9 then torch() end --places a torch after the first 8 blocks and
+  -- if (i-8)%16==0 and i>9 then torch() end --then another every 16 blocks
   turtle.back()
   if i==length-1 and other.close then --closes the branch 
    turtle.select(slot.fill)
