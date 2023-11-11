@@ -2,7 +2,7 @@
 branch = {amount = 1, 	-- the amount of "branch-pairs"
 	  length = 16,	-- the length of each branch
 	  space  = 5,
-	  height = 5}	-- the space between each branch-pair
+	  height = 7}	-- the space between each branch-pair
 slot = {fuel  = 1,	-- the slotnumber for fuel
 	torch = 2,	-- the slotnumber for torches
 	fill  = 3}	-- the slotnumber for filling material
@@ -12,10 +12,10 @@ other = {torch = true,  -- place torches? (true=yes/false=no)
 
 function main()
 	while true do
+		refuel(1+(branch.height+branch.length*4)/96)
 		up(branch.height)
 		for i=1, branch.height, 1 do
-			 for i=1, branch.amount, 1 do
-			  refuel(1+(branch.space+branch.length*4)/96)
+			 for i=1, branch.amount, 1 do			  
 			  turtle.up()
 			  forward(branch.length)
 			  turtle.down()
