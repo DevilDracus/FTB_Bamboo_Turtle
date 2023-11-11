@@ -14,14 +14,10 @@ function main()
 	while true do
 		refuel(1+(branch.height+branch.length*4)/96)
 		up(branch.height)
-		for i=1, branch.height, 1 do
-			 for i=1, branch.amount, 1 do			  
-			  turtle.up()
-			  forward(branch.length)
-			  turtle.down()
-			  back(branch.length)
-			 end
+		for i=1, branch.height, 1 do		  
+		 forward(branch.length)
 		 turtle.down()
+		 back(branch.length)
 		 end
 		 sleep(10)
 	end
@@ -56,9 +52,6 @@ end
 
 function back(length)
  for i=1, length, 1 do
-  -- if i==9 then torch() end --places a torch after the first 8 blocks and
-  -- if (i-8)%16==0 and i>9 then torch() end --then another every 16 blocks  -- if i==9 then torch() end --places a torch after the first 8 blocks and
-  -- if (i-8)%16==0 and i>9 then torch() end --then another every 16 blocks
   turtle.back()
   if i==length-1 and other.close then --closes the branch 
    turtle.select(slot.fill)
