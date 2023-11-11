@@ -19,6 +19,9 @@ function main()
 		 turtle.down()
 		 back(branch.length)
 		 end
+		while turtle.detectDown() == false do
+		 turtle.down()
+		end
 		 sleep(10)
 	end
 end
