@@ -12,7 +12,9 @@ other = {torch = true,  -- place torches? (true=yes/false=no)
 
 function main()
 	while true do
-		turtle.up(branch.height)
+		for i=1, branch.height, 1 do
+		 turtle.up()
+		end
 		for i=1, branch.heigth, 1 do
 		 for i=1, branch.amount, 1 do
 		  refuel(1+(branch.space+branch.length*4)/96)
