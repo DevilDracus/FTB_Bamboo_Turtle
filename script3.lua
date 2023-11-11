@@ -16,13 +16,13 @@ function main()
 		 turtle.up()
 		end
 		for i=1, branch.heigth, 1 do
-		 for i=1, branch.amount, 1 do
-		  refuel(1+(branch.space+branch.length*4)/96)
-		  turtle.up()
-		  forward(branch.length)
-		  turtle.down()
-		  back(branch.length)
-		 end
+			 for i=1, branch.amount, 1 do
+			  refuel(1+(branch.space+branch.length*4)/96)
+			  turtle.up()
+			  forward(branch.length)
+			  turtle.down()
+			  back(branch.length)
+			 end
 		 turtle.down()
 		 end
 		 sleep(10)
