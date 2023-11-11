@@ -14,10 +14,8 @@ function main()
   refuel(1+(branch.space+branch.length*4)/96)
   turtle.up()
   forward(branch.length)
-  back(branch.length)
-  turnAround()
   turtle.down()
-  turnAround()
+  back(branch.length)
  end
 end
 
