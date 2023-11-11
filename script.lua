@@ -10,13 +10,16 @@ other = {torch = true,  -- place torches? (true=yes/false=no)
 -- END OF ADJUSTMENTS
 
 function main()
- for i=1, branch.amount, 1 do
-  refuel(1+(branch.space+branch.length*4)/96)
-  turtle.up()
-  forward(branch.length)
-  turtle.down()
-  back(branch.length)
- end
+	while true do
+		 for i=1, branch.amount, 1 do
+		  refuel(1+(branch.space+branch.length*4)/96)
+		  turtle.up()
+		  forward(branch.length)
+		  turtle.down()
+		  back(branch.length)
+		 end
+		 sleep(1000)
+	end
 end
 
 function forward(length)
