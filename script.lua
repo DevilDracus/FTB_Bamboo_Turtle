@@ -12,17 +12,15 @@ other = {torch = true,  -- place torches? (true=yes/false=no)
 
 function main()
 	while true do
-		for i = 1, branch.height,1 do
-		 turtle.up()
-		end
-		for i=1, branch.heigth, 1 do
-		 for i=1, branch.amount, 1 do
-		  refuel(1+(branch.space+branch.length*4)/96)
-		  turtle.up()
-		  forward(branch.length)
-		  turtle.down()
-		  back(branch.length)
-		 end
+		up(branch.height)
+		for i=1, branch.height, 1 do
+			 for i=1, branch.amount, 1 do
+			  refuel(1+(branch.space+branch.length*4)/96)
+			  turtle.up()
+			  forward(branch.length)
+			  turtle.down()
+			  back(branch.length)
+			 end
 		 turtle.down()
 		 end
 		 sleep(10)
@@ -80,6 +78,12 @@ end
 function turnAround()
  turtle.turnRight()
  turtle.turnRight()
+end
+
+function up(height)
+ for i=1, height, 1 do
+	turtle.up()
+end
 end
 
 function torch()
