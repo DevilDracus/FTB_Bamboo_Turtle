@@ -6,7 +6,7 @@ slot = {fuel  = 1,	-- the slotnumber for fuel
 	torch = 2,	-- the slotnumber for torches
 	fill  = 3}	-- the slotnumber for filling material
 other = {torch = true,  -- place torches? (true=yes/false=no)
-         close = true}  -- close the branches? (true=yes/false=no)
+         close = false}  -- close the branches? (true=yes/false=no)
 -- END OF ADJUSTMENTS
 
 function main()
@@ -32,13 +32,7 @@ function forward(length)
    turtle.dig()
    sleep(0.5)
   end
-  -- if turtle.detectDown() == false then
-   -- turtle.select(slot.fill)
-   -- turtle.placeDown()
-  -- end  -- if turtle.detectDown() == false then
-   -- turtle.select(slot.fill)
-   -- turtle.placeDown()
-  -- end
+  turnLeft()
   turtle.forward()
  end
 end
