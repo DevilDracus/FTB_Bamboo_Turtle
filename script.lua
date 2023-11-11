@@ -16,14 +16,9 @@ function main()
   turnAround()
   torch()
   turnAround()
-  forward(branch.space)
-  turnLeft()
   forward(branch.length)
   back(branch.length)
   turnAround()
-  forward(branch.length)
-  back(branch.length)
-  turnLeft()
  end
 end
 
