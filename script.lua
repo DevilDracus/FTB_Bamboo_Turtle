@@ -12,28 +12,33 @@ other = {torch = true,  -- place torches? (true=yes/false=no)
 function main()
  for i=1, branch.amount, 1 do
   refuel(1+(branch.space+branch.length*4)/96)
+  turtle.up()
   forward(branch.length)
   back(branch.length)
   turnAround()
+  turtle.down()
  end
 end
 
 function forward(length)
  for i=1, length, 1 do
 	turnLeft()
-  while turtle.detectUp() do
+  while turtle.detect() do
    turtle.digUp()
    sleep(0.5)
   end
   turnAround()
-  while turtle.detectUp() do
+  while turtle.detect() do
    turtle.digUp()
    sleep(0.5)
   end
-  if turtle.detectDown() == false then
-   turtle.select(slot.fill)
-   turtle.placeDown()
-  end
+  -- if turtle.detectDown() == false then
+   -- turtle.select(slot.fill)
+   -- turtle.placeDown()
+  -- end  -- if turtle.detectDown() == false then
+   -- turtle.select(slot.fill)
+   -- turtle.placeDown()
+  -- end
   turtle.forward()
  end
 end
