@@ -17,6 +17,7 @@ function main()
   back(branch.length)
   turnAround()
   turtle.down()
+  turnAround()
  end
 end
 
