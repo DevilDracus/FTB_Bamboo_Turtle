@@ -2,28 +2,36 @@
 branch = {amount = 1, 	-- the amount of "branch-pairs"
 	  length = 16,	-- the length of each branch
 	  space  = 5,
-	  height = 5}	-- the space between each branch-pair
+	  height = 1}	-- the space between each branch-pair
 slot = {fuel  = 1,	-- the slotnumber for fuel
 	torch = 2,	-- the slotnumber for torches
 	fill  = 3}	-- the slotnumber for filling material
 other = {torch = true,  -- place torches? (true=yes/false=no)
-         close = false}  -- close the branches? (true=yes/false=no)
+         close = false,
+	hasFuel = false}  -- close the branches? (true=yes/false=no)
 -- END OF ADJUSTMENTS
 
 function main()
 	while true do
+		if turtle.getItemCount(1) > 0 then
+			other.hasFuel = true
+		else
+		other.hasFuel = false
+		end
+	while other.hasFuel do
+		refuel(1+(branch.height*branch.length*4)/96)
 		up(branch.height)
-		for i=1, branch.height, 1 do
-			 for i=1, branch.amount, 1 do
-			  refuel(1+(branch.space+branch.length*4)/96)
-			  turtle.up()
-			  forward(branch.length)
-			  turtle.down()
-			  back(branch.length)
-			 end
+		for i=1, branch.height, 1 do		  
+		 forward(branch.length)
 		 turtle.down()
+		 back(branch.length)
 		 end
+		while turtle.detectDown() == false do
+		 turtle.down()
+		end
+		dropLoot()
 		 sleep(10)
+	end
 	end
 end
 
@@ -40,12 +48,12 @@ function forward(length)
    sleep(0.5)
   end
   turnLeft()
+  sleep(2)
+  turtle.suckDown()
   turtle.forward()
  end
 end
-
 -- TurtleAPI
-
 function refuel(amount)
  if turtle.getFuelLevel() == "unlimited" then return end
  if turtle.getFuelLevel() < 96*amount then
@@ -53,12 +61,8 @@ function refuel(amount)
   turtle.refuel(amount)
  end
 end
-
 function back(length)
  for i=1, length, 1 do
-  -- if i==9 then torch() end --places a torch after the first 8 blocks and
-  -- if (i-8)%16==0 and i>9 then torch() end --then another every 16 blocks  -- if i==9 then torch() end --places a torch after the first 8 blocks and
-  -- if (i-8)%16==0 and i>9 then torch() end --then another every 16 blocks
   turtle.back()
   if i==length-1 and other.close then --closes the branch 
    turtle.select(slot.fill)
@@ -91,6 +95,17 @@ function torch()
   turtle.select(slot.torch)
   turtle.place()
  end
+end
+
+function dropLoot()
+	turnAround()
+	if turtle.detect() then
+		for i=2, 16, 1 do
+			turtle.select(i)
+			turtle.drop()
+		end
+	end
+	turnAround()
 end
 
 main()
