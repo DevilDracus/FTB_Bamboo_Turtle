@@ -48,13 +48,12 @@ function forward(length)
    sleep(0.5)
   end
   turnLeft()
-  collect()
+  sleep(2)
+  turtle.suckDown()
   turtle.forward()
  end
 end
-
 -- TurtleAPI
-
 function refuel(amount)
  if turtle.getFuelLevel() == "unlimited" then return end
  if turtle.getFuelLevel() < 96*amount then
@@ -62,7 +61,6 @@ function refuel(amount)
   turtle.refuel(amount)
  end
 end
-
 function back(length)
  for i=1, length, 1 do
   turtle.back()
@@ -97,11 +95,6 @@ function torch()
   turtle.select(slot.torch)
   turtle.place()
  end
-end
-
-function collect()
-	sleep(2)
-	turtle.suckDown()
 end
 
 function dropLoot()
