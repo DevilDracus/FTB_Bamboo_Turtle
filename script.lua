@@ -15,10 +15,9 @@ function main()
 	while true do
 		if turtle.getItemCount(1) > 0 then
 			other.hasFuel = true
-		end
-	elseif
+		else
 		other.hasFuel = false
-	end
+		end
 	while other.hasFuel do
 		refuel(1+(branch.height*branch.length*4)/96)
 		up(branch.height)
