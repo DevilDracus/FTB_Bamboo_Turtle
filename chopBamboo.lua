@@ -7,12 +7,20 @@ slot = {fuel  = 1,	-- the slotnumber for fuel
 	torch = 2,	-- the slotnumber for torches
 	fill  = 3}	-- the slotnumber for filling material
 other = {torch = true,  -- place torches? (true=yes/false=no)
-         close = false}  -- close the branches? (true=yes/false=no)
+         close = false,
+	hasFuel = false}  -- close the branches? (true=yes/false=no)
 -- END OF ADJUSTMENTS
 
 function main()
 	while true do
-		refuel(1+(branch.height+branch.length*4)/96)
+		if turtle.getItemCount(1) > 0 then
+			other.hasFuel = true
+		end
+	else
+		other.hasFuel = false
+	end
+	while other.hasFuel do
+		refuel(1+(branch.height*branch.length*4)/96)
 		up(branch.height)
 		for i=1, branch.height, 1 do		  
 		 forward(branch.length)
@@ -24,6 +32,7 @@ function main()
 		end
 		dropLoot()
 		 sleep(10)
+	end
 	end
 end
 
