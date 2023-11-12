@@ -2,7 +2,7 @@
 branch = {amount = 1, 	-- the amount of "branch-pairs"
 	  length = 16,	-- the length of each branch
 	  space  = 5,
-	  height = 1}	-- the space between each branch-pair
+	  height = 8}	-- the space between each branch-pair
 slot = {fuel  = 1,	-- the slotnumber for fuel
 	torch = 2,	-- the slotnumber for torches
 	fill  = 3}	-- the slotnumber for filling material
@@ -51,7 +51,7 @@ function refuel(amount)
  if turtle.getFuelLevel() == "unlimited" then return end
  if turtle.getFuelLevel() < 96*amount then
   turtle.select(slot.fuel)
-  turtle.refuel(amount)
+  turtle.refuel()
  end
 end
 function back(length)
