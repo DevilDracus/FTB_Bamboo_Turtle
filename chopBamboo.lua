@@ -24,7 +24,7 @@ function main()
 		 turtle.down()
 		end
 		dropLoot()
-		 sleep(10)
+		 sleep(60)
 	end
 end
 
