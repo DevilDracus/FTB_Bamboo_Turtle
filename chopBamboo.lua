@@ -4,8 +4,7 @@ branch = {amount = 1, 	-- the amount of "branch-pairs"
 	  space  = 5,
 	  height = 4}	-- the space between each branch-pair
 slot = {fuel  = 1,	-- the slotnumber for fuel
-	torch = 2,	-- the slotnumber for torches
-	fill  = 3}	-- the slotnumber for filling material
+	torch = 2}
 other = {torch = true,  -- place torches? (true=yes/false=no)
          close = false,
 	hasFuel = false}  -- close the branches? (true=yes/false=no)
@@ -18,7 +17,8 @@ function main()
 		for i=1, branch.height, 1 do		  
 		 forward(branch.length)
 		 turtle.down()
-		 back(branch.length)
+		 --back(branch.length)
+		turnAround()
 		 end
 		while turtle.detectDown() == false do
 		 turtle.down()
@@ -55,10 +55,6 @@ end
 function back(length)
  for i=1, length, 1 do
   turtle.back()
-  if i==length-1 and other.close then --closes the branch 
-   turtle.select(slot.fill)
-   turtle.placeUp()
-  end
  end
 end
 
