@@ -41,8 +41,6 @@ function forward(length)
    sleep(0.5)
   end
   turnLeft()
-  sleep(2)
-  turtle.suckDown()
   turtle.forward()
  end
 end
