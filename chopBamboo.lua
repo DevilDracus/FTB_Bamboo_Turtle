@@ -22,6 +22,7 @@ function main()
 		while turtle.detectDown() == false do
 		 turtle.down()
 		end
+		dropLoot()
 		 sleep(10)
 	end
 end
@@ -87,6 +88,17 @@ function torch()
   turtle.select(slot.torch)
   turtle.place()
  end
+end
+
+function dropLoot()
+	turnAround()
+	if turtle.detect() then
+		for i=2, 16, 1 do
+			turtle.select(i)
+			turtle.drop()
+		end
+	end
+	turnAround()
 end
 
 main()
