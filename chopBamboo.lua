@@ -13,12 +13,6 @@ other = {torch = true,  -- place torches? (true=yes/false=no)
 
 function main()
 	while true do
-		if turtle.getItemCount(1) > 0 then
-			other.hasFuel = true
-		else
-		other.hasFuel = false
-		end
-	while other.hasFuel do
 		refuel(1+(branch.height*branch.length*4)/96)
 		up(branch.height)
 		for i=1, branch.height, 1 do		  
@@ -31,7 +25,6 @@ function main()
 		end
 		dropLoot()
 		 sleep(10)
-	end
 	end
 end
 
