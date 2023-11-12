@@ -2,7 +2,7 @@
 branch = {amount = 1, 	-- the amount of "branch-pairs"
 	  length = 16,	-- the length of each branch
 	  space  = 5,
-	  height = 7}	-- the space between each branch-pair
+	  height = 1}	-- the space between each branch-pair
 slot = {fuel  = 1,	-- the slotnumber for fuel
 	torch = 2,	-- the slotnumber for torches
 	fill  = 3}	-- the slotnumber for filling material
@@ -15,10 +15,9 @@ function main()
 	while true do
 		if turtle.getItemCount(1) > 0 then
 			other.hasFuel = true
-		end
-	elseif
+		else
 		other.hasFuel = false
-	end
+		end
 	while other.hasFuel do
 		refuel(1+(branch.height*branch.length*4)/96)
 		up(branch.height)
@@ -49,12 +48,12 @@ function forward(length)
    sleep(0.5)
   end
   turnLeft()
+  sleep(2)
+  turtle.suckDown()
   turtle.forward()
  end
 end
-
 -- TurtleAPI
-
 function refuel(amount)
  if turtle.getFuelLevel() == "unlimited" then return end
  if turtle.getFuelLevel() < 96*amount then
@@ -62,7 +61,6 @@ function refuel(amount)
   turtle.refuel(amount)
  end
 end
-
 function back(length)
  for i=1, length, 1 do
   turtle.back()
