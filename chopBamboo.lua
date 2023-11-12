@@ -16,7 +16,7 @@ function main()
 		if turtle.getItemCount(1) > 0 then
 			other.hasFuel = true
 		end
-	else
+	elseif
 		other.hasFuel = false
 	end
 	while other.hasFuel do
